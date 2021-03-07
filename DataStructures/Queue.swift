@@ -6,9 +6,9 @@
 //
 
  class Queue<T> {
-    class Node<T> {
+    class Node {
         let data: T
-        var next: Node<T>?
+        var next: Node?
         
         init(_ data: T) {
             self.data = data
@@ -21,8 +21,8 @@
         return first == nil
     }
     
-    var first: Node<T>?
-    var last: Node<T>?
+    var first: Node?
+    var last: Node?
     
      func add(_ data: T) {
         if first == nil {
