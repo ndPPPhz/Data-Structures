@@ -101,31 +101,3 @@ class BinarySearchTree<T: Comparable>: BinaryTree<T> {
         }
     }
 }
-
-extension BinaryTree where T: Comparable {
-    var isBinarySearchTree: Bool {
-        /*
-         If the inorder traversal of the tree returns items sorted already then the tree is also a binary search tree.
-         I am looping through the items of a queue which holds the value of the traversed nodes to determine
-        if the tree is also a BST. This can also be done without using such a structure and it will change from O(N) memory space to O(1)
-        */
-        let queue = Queue<T>()
-        traversal(.inorder) {
-            queue.add($0.data)
-        }
-        
-        // An empty tree is a BST
-        guard var tmpItem = queue.deque() else {
-            return true
-        }
-        
-        while let dequedItem = queue.deque() {
-            guard tmpItem <= dequedItem else {
-                return false
-            }
-            tmpItem = dequedItem
-        }
-        
-        return true
-    }
-}
