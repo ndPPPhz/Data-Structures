@@ -15,32 +15,41 @@
         }
     }
     
-    init() {}
+    // MARK: - Properties
+    private var firstNode: Node?
+    private var lastNode: Node?
     
     var isEmpty: Bool {
-        return first == nil
+        return firstNode == nil
     }
     
-    var first: Node?
-    var last: Node?
+    // MARK: - Init
+    init() {}
     
+    // MARK: - Methods
+    /// Adds data at the end of the queue
+    ///
+    /// Time complexity: O (1)
      func enqueue(_ data: T) {
-        if first == nil {
-            first = Node(data)
-            last = first
+        if firstNode == nil {
+            firstNode = Node(data)
+            lastNode = firstNode
         } else {
-            let tmpLast = last
-            last = Node(data)
-            tmpLast?.next = last
+            let tmpLastNode = lastNode
+            lastNode = Node(data)
+            tmpLastNode?.next = lastNode
         }
     }
     
+    /// Removes the element on top of the queue
+    ///
+    /// Time complexity: O (1)
     func deque() -> T? {
-        guard let tmpFirst = first else {
+        guard let tmpFirstNode = firstNode else {
             return nil
         }
         
-        first = tmpFirst.next
-        return tmpFirst.data
+        firstNode = tmpFirstNode.next
+        return tmpFirstNode.data
     }
 }
