@@ -19,6 +19,7 @@
     private var firstNode: Node?
     private var lastNode: Node?
     
+    /// Returns true if the queue doesn't store any element
     var isEmpty: Bool {
         return firstNode == nil
     }
@@ -44,6 +45,7 @@
     /// Removes the element on top of the queue
     ///
     /// Time complexity: O (1)
+    @discardableResult
     func deque() -> T? {
         guard let tmpFirstNode = firstNode else {
             return nil

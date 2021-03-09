@@ -28,5 +28,25 @@ final class QueueTests: XCTestCase {
         XCTAssertTrue(queue.isEmpty, "Queue should be empty at this time")
         XCTAssertEqual(input, returnedItems, "Queue didn't respect the order")
     }
+    
+    func testQueueReturnsNilWhenQueueIsEmpty() {
+        let queue = Queue<Int>()
+        
+        let input = [4, 8, 11, 2]
+        
+        input.forEach {
+            queue.enqueue($0)
+        }
+        
+        // Free queue of elements
+        for _ in 0..<input.count {
+            queue.deque()
+        }
+
+        for _ in 0...9 {
+            XCTAssertNil(queue.deque(), "Empty queue should return nil from dequeing calls")
+            XCTAssertTrue(queue.isEmpty, "Queue should be empty")
+        }
+    }
 }
 
