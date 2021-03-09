@@ -5,7 +5,7 @@
 //  Created by Annino De Petra on 06/03/2021.
 //
 
-class BTNode<T> {
+final class BTNode<T> {
     var data: T
     var left: BTNode<T>?
     var right: BTNode<T>?

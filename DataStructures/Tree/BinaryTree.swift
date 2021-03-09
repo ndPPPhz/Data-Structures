@@ -17,16 +17,18 @@ class BinaryTree<T>: Tree {
         self.root = BTNode(data)
     }
 
-    // MARK: - Utility
+    // MARK: - Search
     func search(_ data: T) -> Bool {
         // TODO
         return false
     }
     
+    // MARK: - Insert
     func insert(_ data: T) {
         // TODO
     }
     
+    // MARK: - Delete
     func delete(_ data: T) -> Bool {
         // TODO
         return false
@@ -51,6 +53,7 @@ class BinaryTree<T>: Tree {
         return Swift.max(leftHeight, rightHeight) + 1
     }
     
+    // MARK: - Utility
     var height: Int {
         guard let rootBTNode = root else {
             return 0
@@ -139,6 +142,7 @@ class BinaryTree<T>: Tree {
     
 }
 
+// MARK: - Extension - T: Comparable
 extension BinaryTree where T: Comparable {
     var isBinarySearchTree: Bool {
         /*
