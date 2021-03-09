@@ -27,6 +27,11 @@ class BinaryTree<T>: Tree {
         // TODO
     }
     
+    func delete(_ data: T) -> Bool {
+        // TODO
+        return false
+    }
+    
     private func recursiveHeight(node: BTNode<T>) -> Int {
         var leftHeight = -1
         var rightHeight = -1
@@ -157,7 +162,6 @@ extension BinaryTree where T: Comparable {
             }
             tmpItem = dequedItem
         }
-        
         return true
     }
 }

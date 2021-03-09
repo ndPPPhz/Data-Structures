@@ -6,7 +6,7 @@
 //
 
 class BTNode<T> {
-    let data: T
+    var data: T
     var left: BTNode<T>?
     var right: BTNode<T>?
     
