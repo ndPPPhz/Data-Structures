@@ -5,7 +5,7 @@
 //  Created by Annino De Petra on 06/03/2021.
 //
 
- class Queue<T> {
+ final class Queue<T> {
     class Node {
         let data: T
         var next: Node?
@@ -24,7 +24,7 @@
     var first: Node?
     var last: Node?
     
-     func add(_ data: T) {
+     func enqueue(_ data: T) {
         if first == nil {
             first = Node(data)
             last = first

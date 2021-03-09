@@ -16,7 +16,7 @@ final class QueueTests: XCTestCase {
         let input = [4, 8, 11, 2]
         
         input.forEach {
-            queue.add($0)
+            queue.enqueue($0)
         }
 
         var returnedItems = Array<Int>()

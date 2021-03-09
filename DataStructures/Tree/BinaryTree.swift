@@ -106,16 +106,16 @@ class BinaryTree<T>: Tree {
     private func breadthTraversal(node: BTNode<T>, closure: (BTNode<T>) -> Void) {
         // FIFO
         let queue = Queue<BTNode<T>>()
-        queue.add(node)
+        queue.enqueue(node)
         
         while let node = queue.deque() {
             closure(node)
             if let leftNode = node.left {
-                queue.add(leftNode)
+                queue.enqueue(leftNode)
             }
             
             if let rightNode = node.right {
-                queue.add(rightNode)
+                queue.enqueue(rightNode)
             }
         }
     }
@@ -148,7 +148,7 @@ extension BinaryTree where T: Comparable {
         */
         let queue = Queue<T>()
         traversal(.inorder) {
-            queue.add($0.data)
+            queue.enqueue($0.data)
         }
         
         // An empty tree is a BST
