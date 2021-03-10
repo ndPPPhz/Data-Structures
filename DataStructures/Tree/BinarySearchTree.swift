@@ -29,7 +29,6 @@ final class BinarySearchTree<T: Comparable>: BinaryTree<T> {
         }
     }
     
-    
     /// Searches if data is present in the the binary search tree
     ///
     /// Time complexity: O (log_2(N)) if the tree is balanced. O(N) if not.
@@ -219,6 +218,7 @@ final class BinarySearchTree<T: Comparable>: BinaryTree<T> {
     /// Removed data from within the tree
     ///
     /// Time complexity: O (log_2(N)) if the tree is balanced. O(N) if not.
+    /// - Returns: True if the element was removed.  False if the element is not present.
     @discardableResult
     override func delete(_ data: T) -> Bool {
         // Check if it's an empty tree

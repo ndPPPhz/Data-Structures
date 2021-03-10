@@ -144,6 +144,7 @@ class BinaryTree<T>: Tree {
 
 // MARK: - Extension - T: Comparable
 extension BinaryTree where T: Comparable {
+    /// Returns true if the tree on which it's being called matches the binary search tree conditions
     var isBinarySearchTree: Bool {
         /*
          If the inorder traversal of the tree returns items sorted already then the tree is also a binary search tree.
