@@ -48,5 +48,10 @@ final class QueueTests: XCTestCase {
             XCTAssertTrue(queue.isEmpty, "Queue should be empty")
         }
     }
+    
+    func testEmptyQueue() {
+        let queue = Queue<Int>()
+        XCTAssertTrue(queue.isEmpty, "Queue should be empty")
+    }
 }
 
