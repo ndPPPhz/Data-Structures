@@ -16,12 +16,12 @@
     }
     
     // MARK: - Properties
-    private var firstNode: Node?
-    private var lastNode: Node?
+    private var head: Node?
+    private var tail: Node?
     
     /// Returns true if the queue doesn't store any element
     var isEmpty: Bool {
-        return firstNode == nil
+        return head == nil && tail == nil
     }
     
     // MARK: - Init
@@ -32,13 +32,13 @@
     ///
     /// Time complexity: O (1)
      func enqueue(_ data: T) {
-        if firstNode == nil {
-            firstNode = Node(data)
-            lastNode = firstNode
+        if head == nil {
+            head = Node(data)
+            tail = head
         } else {
-            let tmpLastNode = lastNode
-            lastNode = Node(data)
-            tmpLastNode?.next = lastNode
+            let tmpLastNode = tail
+            tail = Node(data)
+            tmpLastNode?.next = tail
         }
     }
     
@@ -47,11 +47,16 @@
     /// Time complexity: O (1)
     @discardableResult
     func deque() -> T? {
-        guard let tmpFirstNode = firstNode else {
+        guard let currentHead = head else {
             return nil
         }
+        // Set the new head
+        head = currentHead.next
         
-        firstNode = tmpFirstNode.next
-        return tmpFirstNode.data
+        // If the head was the only one element in the queue, set the tail to nil too
+        if currentHead.next == nil {
+            tail = nil
+        }
+        return currentHead.data
     }
 }
