@@ -22,11 +22,14 @@ class LinkedList<T: Equatable> {
         }
     }
     
+    // MARK: - Properties
     private(set) var head: Node?
     private(set) var tail: Node?
     
+    // MARK: - Init
     init() {}
     
+    // MARK: - Append
     func add(_ data: T) {
         let newNode = Node(data)
         
@@ -39,6 +42,7 @@ class LinkedList<T: Equatable> {
         }
     }
     
+    // MARK: - Traverse
     func traverse(closure: (Node) -> Void) {
         var tmpNode = head
         
@@ -62,6 +66,7 @@ class LinkedList<T: Equatable> {
         recursiveReversedTraverse(node: head, closure: closure)
     }
     
+    // MARK: - Search
     @discardableResult
     func search(_ data: T) -> Bool {
         var tmpNode = head
@@ -77,6 +82,7 @@ class LinkedList<T: Equatable> {
         }
     }
     
+    // MARK: - Remove
     @discardableResult
     func remove(_ data: T) -> Bool {
         guard let head = head else {
@@ -109,6 +115,7 @@ class LinkedList<T: Equatable> {
         }
     }
     
+    // MARK: - Utilities
     func setNewHead(_ headNode: Node) {
         head = headNode
         tail = head
