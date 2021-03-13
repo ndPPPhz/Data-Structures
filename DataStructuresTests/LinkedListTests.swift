@@ -278,5 +278,12 @@ final class LinkedListTests: XCTestCase {
 
         XCTAssertEqual(linkedList.head?.data, 1, "Incorrect value stored in head after adding a node at the top of the linked list")
         XCTAssertEqual(linkedList.tail?.data, 0, "Incorrect value stored in head after adding a node at the top of the linked list")
+        
+        linkedList.remove(1)
+        linkedList.remove(0)
+        
+        XCTAssertNil(linkedList.head, "Found a not empty head after removing all nodes")
+        XCTAssertNil(linkedList.tail, "Found a not empty head after removing all nodes")
+
     }
 }
