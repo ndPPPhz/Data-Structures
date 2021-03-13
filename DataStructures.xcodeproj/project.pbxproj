@@ -17,6 +17,8 @@
 		6E38E66E25F5017F00FA2766 /* BinaryTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38E66A25F5017F00FA2766 /* BinaryTreeNode.swift */; };
 		6E38E68E25F5040600FA2766 /* BinarySearchTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38E68D25F5040600FA2766 /* BinarySearchTreeTests.swift */; };
 		6E38E69825F56C6F00FA2766 /* BinaryTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38E69725F56C6F00FA2766 /* BinaryTreeTests.swift */; };
+		6EFDAEFB25FC407200D072F0 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDAEFA25FC407200D072F0 /* LinkedList.swift */; };
+		6EFDAEFF25FC453600D072F0 /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDAEFE25FC453600D072F0 /* LinkedListTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		6E38E66A25F5017F00FA2766 /* BinaryTreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryTreeNode.swift; sourceTree = "<group>"; };
 		6E38E68D25F5040600FA2766 /* BinarySearchTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeTests.swift; sourceTree = "<group>"; };
 		6E38E69725F56C6F00FA2766 /* BinaryTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeTests.swift; sourceTree = "<group>"; };
+		6EFDAEFA25FC407200D072F0 /* LinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
+		6EFDAEFE25FC453600D072F0 /* LinkedListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				6E38E65F25F5013E00FA2766 /* Queue.swift */,
+				6EFDAEFA25FC407200D072F0 /* LinkedList.swift */,
 				6E38E67325F5019500FA2766 /* Tree */,
 				6E38E64625F5011900FA2766 /* DataStructures.h */,
 				6E38E64725F5011900FA2766 /* Info.plist */,
@@ -99,6 +104,7 @@
 				6E38E65125F5011900FA2766 /* QueueTests.swift */,
 				6E38E68D25F5040600FA2766 /* BinarySearchTreeTests.swift */,
 				6E38E69725F56C6F00FA2766 /* BinaryTreeTests.swift */,
+				6EFDAEFE25FC453600D072F0 /* LinkedListTests.swift */,
 				6E38E65325F5011900FA2766 /* Info.plist */,
 			);
 			path = DataStructuresTests;
@@ -224,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EFDAEFB25FC407200D072F0 /* LinkedList.swift in Sources */,
 				6E38E66D25F5017F00FA2766 /* Tree.swift in Sources */,
 				6E38E66C25F5017F00FA2766 /* BinaryTree.swift in Sources */,
 				6E38E66E25F5017F00FA2766 /* BinaryTreeNode.swift in Sources */,
@@ -238,6 +245,7 @@
 			files = (
 				6E38E69825F56C6F00FA2766 /* BinaryTreeTests.swift in Sources */,
 				6E38E68E25F5040600FA2766 /* BinarySearchTreeTests.swift in Sources */,
+				6EFDAEFF25FC453600D072F0 /* LinkedListTests.swift in Sources */,
 				6E38E65225F5011900FA2766 /* QueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
