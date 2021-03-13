@@ -62,6 +62,10 @@ class LinkedList<T: Equatable>: NSCopying {
     private(set) var head: Node?
     private(set) var tail: Node?
     
+    var isEmpty: Bool {
+        return head == nil && tail == nil
+    }
+    
     // MARK: - Init
     init() {}
     
