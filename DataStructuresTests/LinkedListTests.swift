@@ -12,12 +12,13 @@ final class LinkedListTests: XCTestCase {
     var linkedList = LinkedList<Int>()
     
     func testAddingNodeAtEnd() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         var traversalElements = Array<Int>()
-        let expectedElements = [1, 2, 3]
+        let expectedElements = Array<Int>(range)
         
         linkedList.traverse {
             traversalElements.append($0.data)
@@ -27,9 +28,10 @@ final class LinkedListTests: XCTestCase {
     }
     
     func testRemoveItemFromLinkedList() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         var traversalElements = Array<Int>()
         let expectedElements = [1, 3]
@@ -43,13 +45,14 @@ final class LinkedListTests: XCTestCase {
     }
     
     func testRemoveNotPresentElementFromLinkedListDoesntAffectLinkedList() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         var traversalElements = Array<Int>()
-        let expectedElements = [1, 2, 3]
-        
+        let expectedElements = Array<Int>(range)
+
         linkedList.remove(99)
         linkedList.traverse {
             traversalElements.append($0.data)
@@ -63,9 +66,10 @@ final class LinkedListTests: XCTestCase {
     }
     
     func testRemoveHeadFromLinkedList() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         var traversalElements = Array<Int>()
         let expectedElements = [2, 3]
@@ -107,31 +111,34 @@ final class LinkedListTests: XCTestCase {
     }
     
     func testSearchLinkedList() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         let didFindThree = linkedList.search(3)
         XCTAssertTrue(didFindThree, "Value 3 not found in the linkedlist")
     }
     
     func testSearchNotPresentElementInLinkedList() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         let didFindFour = linkedList.search(4)
         XCTAssertFalse(didFindFour, "Value 4 unexpectedly found in the linked list")
     }
     
     func testLinkedListReversedTraverse() {
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        let range = 1..<4
+        for i in range {
+            linkedList.add(i)
+        }
         
         var reversedTraversalElements = Array<Int>()
-        let expectedElements = [3, 2, 1]
-        
+        let expectedElements = Array<Int>(range.reversed())
+
         linkedList.reversedTraverse {
             reversedTraversalElements.append($0.data)
         }
