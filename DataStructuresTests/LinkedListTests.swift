@@ -14,7 +14,7 @@ final class LinkedListTests: XCTestCase {
     func testAddingNodeAtEnd() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         var traversalElements = Array<Int>()
@@ -30,7 +30,7 @@ final class LinkedListTests: XCTestCase {
     func testRemoveItemFromLinkedList() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         var traversalElements = Array<Int>()
@@ -47,7 +47,7 @@ final class LinkedListTests: XCTestCase {
     func testRemoveNotPresentElementFromLinkedListDoesntAffectLinkedList() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         var traversalElements = Array<Int>()
@@ -68,7 +68,7 @@ final class LinkedListTests: XCTestCase {
     func testRemoveHeadFromLinkedList() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         var traversalElements = Array<Int>()
@@ -83,7 +83,7 @@ final class LinkedListTests: XCTestCase {
     }
     
     func testRemoveHeadFromOneElementLinkedList() {
-        linkedList.add(1)
+        linkedList.append(1)
         
         var traversalElements = Array<Int>()
         
@@ -113,7 +113,7 @@ final class LinkedListTests: XCTestCase {
     func testSearchLinkedList() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         let didFindThree = linkedList.search(3)
@@ -123,7 +123,7 @@ final class LinkedListTests: XCTestCase {
     func testSearchNotPresentElementInLinkedList() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         let didFindFour = linkedList.search(4)
@@ -133,7 +133,7 @@ final class LinkedListTests: XCTestCase {
     func testLinkedListReversedTraverse() {
         let range = 1..<4
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         var reversedTraversalElements = Array<Int>()
@@ -179,7 +179,7 @@ final class LinkedListTests: XCTestCase {
     func testReverseLinkedList() {
         let range = 0 ..< 10
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         linkedList.reverse()
@@ -201,7 +201,7 @@ final class LinkedListTests: XCTestCase {
     func testLinkedListCopyReturnsNewLinkedList_NewPointers() {
         let range = 0 ..< 10
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
         
         let copiedLinkedList = linkedList.copy() as! LinkedList<Int>
@@ -231,7 +231,7 @@ final class LinkedListTests: XCTestCase {
     func testReversedLinkedListReturnsANewReversedLinkedList() {
         let range = 0 ..< 10
         for i in range {
-            linkedList.add(i)
+            linkedList.append(i)
         }
 
         let newReversedLinkedList = linkedList.reversed()

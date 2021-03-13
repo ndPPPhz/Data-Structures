@@ -84,7 +84,7 @@ class LinkedList<T: Equatable>: NSCopying {
     /// Appends data to the tail of the linked list
     ///
     /// Time complexity: O (1)
-    func add(_ data: T) {
+    func append(_ data: T) {
         let newNode = Node(data)
         
         if head == nil {
