@@ -20,6 +20,28 @@ class LinkedList<T: Equatable> {
             self.data = data
             self.next = next
         }
+        
+        // MARK: - NSCopying
+        func copy(with zone: NSZone? = nil) -> Any {
+            let newNode = Node(data)
+            
+            // Setting reference to the current and the next node
+            var currentNode = newNode as Node?
+            var nextNode = next
+            
+            // Iterate till it reaches the end
+            while nextNode != nil {
+                // Make a copy of the next node and set as next of the current copied node
+                let nextNodeCopied = nextNode?.copy() as! Node
+                currentNode?.next = nextNodeCopied
+                // Iterate
+                currentNode = nextNode
+                nextNode = currentNode?.next
+            }
+            
+            return newNode
+        }
+        
     }
     
     // MARK: - Properties
@@ -28,6 +50,21 @@ class LinkedList<T: Equatable> {
     
     // MARK: - Init
     init() {}
+    
+    // MARK: - NSCopying
+    func copy(with zone: NSZone? = nil) -> Any {
+        let newList = LinkedList()
+        
+        // Copy all nodes
+        if
+            let head = head,
+            let copiedHead = head.copy() as? Node
+        {
+            newList.setNewHead(copiedHead)
+        }
+        
+        return newList
+    }
     
     // MARK: - Append
     func add(_ data: T) {
@@ -147,5 +184,46 @@ class LinkedList<T: Equatable> {
             twoNodesAtATimeIterator = twoNodesAtATimeIterator?.next?.next
         }
         return false
+    }
+    
+    /// Reverses the linked list in place.
+    func reverse() {
+        guard
+            head != nil,
+            head?.next != nil
+        else {
+            return
+        }
+        
+        
+        /*
+        We need to keep track of
+         - previous node: it's going to be the new next
+         - current node: the node we are changing the link to
+         - new node: to store a reference to the unlinked next which is going to be the next current
+        */
+        var previous: Node? = nil
+        var current = head
+        tail = head
+        var next = head?.next
+        
+        while next != nil {
+            // Set next pointer to the previous node
+            current?.next = previous
+            // set current as previous for next loop
+            previous = current
+            current = next
+            next = current?.next
+        }
+        
+        current?.next = previous
+        head = current
+    }
+    
+    /// Returns a new reversed linked list .
+    func reversed() -> LinkedList<T> {
+        let copiedLinkedList = self.copy() as! LinkedList
+        copiedLinkedList.reverse()
+        return copiedLinkedList
     }
 }
