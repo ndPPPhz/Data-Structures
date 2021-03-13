@@ -8,7 +8,11 @@
 import Foundation
 
 class LinkedList<T: Equatable> {
-    class Node {
+    class Node: Equatable {
+        static func == (lhs: LinkedList<T>.Node, rhs: LinkedList<T>.Node) -> Bool {
+            return lhs.data == rhs.data && lhs.next === rhs.next
+        }
+        
         let data: T
         var next: Node?
         
@@ -103,5 +107,38 @@ class LinkedList<T: Equatable> {
                 return false
             }
         }
+    }
+    
+    func setNewHead(_ headNode: Node) {
+        head = headNode
+        tail = head
+        
+        var tailIterator = tail
+        
+        while let newTail = tailIterator?.next {
+            tail = newTail
+            tailIterator = newTail.next
+        }
+    }
+    
+    var hasCycles: Bool {
+        guard
+            head != nil,
+            head?.next != nil
+        else {
+            return false
+        }
+        
+        var oneNodeAtATimeIterator = head
+        var twoNodesAtATimeIterator = head?.next
+        
+        while twoNodesAtATimeIterator != nil {
+            if oneNodeAtATimeIterator == twoNodesAtATimeIterator {
+                return true
+            }
+            oneNodeAtATimeIterator = oneNodeAtATimeIterator?.next
+            twoNodesAtATimeIterator = twoNodesAtATimeIterator?.next?.next
+        }
+        return false
     }
 }

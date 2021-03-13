@@ -89,9 +89,8 @@
 		6E38E64525F5011900FA2766 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
-				6E38E65F25F5013E00FA2766 /* Queue.swift */,
-				6EFDAEFA25FC407200D072F0 /* LinkedList.swift */,
-				6E38E67325F5019500FA2766 /* Tree */,
+				6E81FF6025FCD1EB002E8B53 /* Linear */,
+				6E81FF6125FCD1F6002E8B53 /* Not Linear */,
 				6E38E64625F5011900FA2766 /* DataStructures.h */,
 				6E38E64725F5011900FA2766 /* Info.plist */,
 			);
@@ -119,6 +118,23 @@
 				6E38E66925F5017F00FA2766 /* Tree.swift */,
 			);
 			path = Tree;
+			sourceTree = "<group>";
+		};
+		6E81FF6025FCD1EB002E8B53 /* Linear */ = {
+			isa = PBXGroup;
+			children = (
+				6E38E65F25F5013E00FA2766 /* Queue.swift */,
+				6EFDAEFA25FC407200D072F0 /* LinkedList.swift */,
+			);
+			path = Linear;
+			sourceTree = "<group>";
+		};
+		6E81FF6125FCD1F6002E8B53 /* Not Linear */ = {
+			isa = PBXGroup;
+			children = (
+				6E38E67325F5019500FA2766 /* Tree */,
+			);
+			path = "Not Linear";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

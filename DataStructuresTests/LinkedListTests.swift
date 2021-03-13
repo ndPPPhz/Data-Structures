@@ -138,4 +138,34 @@ final class LinkedListTests: XCTestCase {
         
         XCTAssertEqual(reversedTraversalElements, expectedElements, "Reversed traversal returned items in an incorrect order")
     }
+    
+    func testLinkedListWithCycles_hasCyclesReturnsTrue() {
+        var currentNode = LinkedList<Int>.Node(0)
+        let head = currentNode
+        linkedList.setNewHead(head)
+        
+        for i in 1..<10 {
+            let node = LinkedList<Int>.Node(i)
+            currentNode.next = node
+            currentNode = node
+        }
+        
+        currentNode.next = head
+        
+        XCTAssertTrue(linkedList.hasCycles, "Cycle inspection returned false in a linked list with a loop")
+    }
+    
+    func testLinkedListWithoutCycles_hasCyclesReturnsFalse() {
+        var currentNode = LinkedList<Int>.Node(0)
+        let head = currentNode
+        linkedList.setNewHead(head)
+        
+        for i in 1..<10 {
+            let node = LinkedList<Int>.Node(i)
+            currentNode.next = node
+            currentNode = node
+        }
+                
+        XCTAssertFalse(linkedList.hasCycles, "Cycle inspection found out a cycle in a linked list without a loop")
+    }
 }
