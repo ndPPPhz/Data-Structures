@@ -16,10 +16,13 @@ final class Stack<T: Equatable> {
     // MARK: - Properties
     private let list: LinkedList<T>
 
+    
+    /// Returns the element stored on top of the stack
     var top: T? {
         return list.head?.data
     }
     
+    /// Returns true if the stack doesn't store any element
     var isEmpty: Bool {
         return list.isEmpty
     }
