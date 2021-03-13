@@ -7,15 +7,19 @@
 
 import Foundation
 
-class LinkedList<T: Equatable> {
-    class Node: Equatable {
+class LinkedList<T: Equatable>: NSCopying {
+    // MARK: - Node
+    final class Node: Equatable, NSCopying, CustomDebugStringConvertible {
+        // MARK: - Equatable
         static func == (lhs: LinkedList<T>.Node, rhs: LinkedList<T>.Node) -> Bool {
             return lhs.data == rhs.data && lhs.next === rhs.next
         }
         
+        // MARK: - Properties
         let data: T
         var next: Node?
         
+        // MARK: - Init
         init(_ data: T, next: Node? = nil) {
             self.data = data
             self.next = next
@@ -42,6 +46,16 @@ class LinkedList<T: Equatable> {
             return newNode
         }
         
+        // MARK: - CustomDebugStringConvertible
+        var debugDescription: String {
+            let nextString: String? = {
+                guard let next = next else {
+                    return nil
+                }
+                return "Next Node value: \(next.data) and ptr: \(ObjectIdentifier(next))"
+            }()
+            return "Node value: \(data) \(nextString != nil ? nextString! : ".")"
+        }
     }
     
     // MARK: - Properties
@@ -67,6 +81,9 @@ class LinkedList<T: Equatable> {
     }
     
     // MARK: - Append
+    /// Appends data to the tail of the linked list
+    ///
+    /// Time complexity: O (1)
     func add(_ data: T) {
         let newNode = Node(data)
         
@@ -104,6 +121,10 @@ class LinkedList<T: Equatable> {
     }
     
     // MARK: - Search
+    /// Searches if an element is contained in the linked list
+    /// - Returns: True if found. False otherwise.
+    ///
+    /// Time complexity: O (N)
     @discardableResult
     func search(_ data: T) -> Bool {
         var tmpNode = head
@@ -120,6 +141,10 @@ class LinkedList<T: Equatable> {
     }
     
     // MARK: - Remove
+    /// Removes node containing data from the linked list
+    /// - Returns: True if removed. False otherwise.
+    ///
+    /// Time complexity: O (N)
     @discardableResult
     func remove(_ data: T) -> Bool {
         guard let head = head else {
@@ -153,6 +178,7 @@ class LinkedList<T: Equatable> {
     }
     
     // MARK: - Utilities
+    /// Replaces all nodes setting a new head
     func setNewHead(_ headNode: Node) {
         head = headNode
         tail = head
@@ -165,6 +191,7 @@ class LinkedList<T: Equatable> {
         }
     }
     
+    /// Returns true if the linked list has a cycle
     var hasCycles: Bool {
         guard
             head != nil,
