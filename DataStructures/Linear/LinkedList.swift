@@ -80,7 +80,7 @@ class LinkedList<T: Equatable>: NSCopying {
         return newList
     }
     
-    // MARK: - Append
+    // MARK: - Append and Add
     /// Appends data to the tail of the linked list
     ///
     /// Time complexity: O (1)
@@ -94,6 +94,20 @@ class LinkedList<T: Equatable>: NSCopying {
             tail?.next = newNode
             tail = newNode
         }
+    }
+    
+    /// Adds a new node containing data at the top of the linked list
+    ///
+    /// Time complexity: O (1)
+    func add(_ data: T) {
+        let newHead = Node(data)
+
+        if head == nil {
+            tail = newHead
+        } else {
+            newHead.next = head
+        }
+        head = newHead
     }
     
     // MARK: - Traverse

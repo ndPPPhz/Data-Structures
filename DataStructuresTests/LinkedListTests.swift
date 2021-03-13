@@ -249,4 +249,34 @@ final class LinkedListTests: XCTestCase {
         
         XCTAssertEqual(traversalElements, reversedTraversalElements.reversed(), "Reversed Linked List returned incorrect values")
     }
+    
+    func testAddNodeAtTopOfLinkedList() {
+        let range = 1 ..< 3
+        for i in range {
+            linkedList.append(i)
+        }
+
+        linkedList.add(0)
+        
+        var traversalElements = Array<Int>()
+        let expectedElements = [0, 1, 2]
+
+        linkedList.traverse {
+            traversalElements.append($0.data)
+        }
+        
+        XCTAssertEqual(traversalElements, expectedElements, "Incorrect values returend from the traversal after adding a node at the top of the linked list")
+    }
+    
+    func testAddNodeAtTopOfLinkedList_emptyLinkedList() {
+        linkedList.add(0)
+        
+        XCTAssertEqual(linkedList.head?.data, 0, "Incorrect value stored in head after adding a node at the top of the linked list")
+        XCTAssertEqual(linkedList.tail?.data, 0, "Incorrect value stored in head after adding a node at the top of the linked list")
+        
+        linkedList.add(1)
+
+        XCTAssertEqual(linkedList.head?.data, 1, "Incorrect value stored in head after adding a node at the top of the linked list")
+        XCTAssertEqual(linkedList.tail?.data, 0, "Incorrect value stored in head after adding a node at the top of the linked list")
+    }
 }
