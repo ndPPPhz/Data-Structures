@@ -168,4 +168,78 @@ final class LinkedListTests: XCTestCase {
                 
         XCTAssertFalse(linkedList.hasCycles, "Cycle inspection found out a cycle in a linked list without a loop")
     }
+    
+    func testReverseLinkedList() {
+        let range = 0 ..< 10
+        for i in range {
+            linkedList.add(i)
+        }
+        
+        linkedList.reverse()
+        
+        var traversalElementsAfterReverse = Array<Int>()
+        
+        var expectedElements = Array<Int>(range)
+        expectedElements.reverse()
+        
+        linkedList.traverse {
+            traversalElementsAfterReverse.append($0.data)
+        }
+        
+        XCTAssertEqual(traversalElementsAfterReverse, expectedElements, "Linked list traversal order is incorrect after reversing the linked list")
+        XCTAssertEqual(linkedList.tail?.data, 0, "Incorrect value found stored in the linked list tail after reversing")
+        XCTAssertNil(linkedList.tail?.next, "Found a stored node after the linked list tail after reversing")
+    }
+    
+    func testLinkedListCopyReturnsNewLinkedList_NewPointers() {
+        let range = 0 ..< 10
+        for i in range {
+            linkedList.add(i)
+        }
+        
+        let copiedLinkedList = linkedList.copy() as! LinkedList<Int>
+        
+        XCTAssertTrue(copiedLinkedList !== linkedList, "Copied linked list shares same pointer of the original one")
+        
+        var linkedListIterator = linkedList.head
+        var copiedLinkedListIterator = copiedLinkedList.head
+        
+        while
+            let notNilLinkedListIterator = linkedListIterator,
+            let notNilCopiedLinkedListIterator = copiedLinkedListIterator
+        {
+            XCTAssertEqual(linkedListIterator?.data, copiedLinkedListIterator?.data, "Different data found at \(notNilLinkedListIterator) - \(notNilCopiedLinkedListIterator) after cloning the linked list")
+            
+            if
+                let nextLinkedListIteratorNode = linkedListIterator?.next,
+                let nextCopiedLinkedListIteratorNode = copiedLinkedListIterator?.next
+            {
+                XCTAssertTrue(nextLinkedListIteratorNode !== nextCopiedLinkedListIteratorNode, "Different data found at \(nextLinkedListIteratorNode) - \(nextCopiedLinkedListIteratorNode) after cloning the linked list")
+            }
+            linkedListIterator = linkedListIterator?.next
+            copiedLinkedListIterator = copiedLinkedListIterator?.next
+        }
+    }
+    
+    func testReversedLinkedListReturnsANewReversedLinkedList() {
+        let range = 0 ..< 10
+        for i in range {
+            linkedList.add(i)
+        }
+
+        let newReversedLinkedList = linkedList.reversed()
+
+        var traversalElements = Array<Int>()
+        var reversedTraversalElements = Array<Int>()
+
+        linkedList.traverse {
+            traversalElements.append($0.data)
+        }
+        
+        newReversedLinkedList.traverse {
+            reversedTraversalElements.append($0.data)
+        }
+        
+        XCTAssertEqual(traversalElements, reversedTraversalElements.reversed(), "Reversed Linked List returned incorrect values")
+    }
 }
