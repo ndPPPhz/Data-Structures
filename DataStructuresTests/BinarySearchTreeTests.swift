@@ -147,8 +147,18 @@ final class BinarySearchTreeTests: XCTestCase {
         XCTAssertEqual(tree.min, 10, "Incorrect min value returned")
     }
     
+    func testBinarySearchTreeMinValue_emptyTree() {
+        let emptyTree = BinarySearchTree<Int>()
+        XCTAssertNil(emptyTree.min, "Min value must not exist on an empty tree")
+    }
+    
     func testBinarySearchTreeMaxValue() {
         XCTAssertEqual(tree.max, 70, "Incorrect max value returned")
+    }
+    
+    func testBinarySearchTreeMaxValue_emptyTree() {
+        let emptyTree = BinarySearchTree<Int>()
+        XCTAssertNil(emptyTree.max, "Max value must not exist on an empty tree")
     }
     
     func testDeleteLeafNode_10() {
@@ -339,5 +349,13 @@ final class BinarySearchTreeTests: XCTestCase {
             returnedBreadthTraversal.append($0.data)
         }
         XCTAssertEqual(expectedBreadthTraversal, returnedBreadthTraversal, "Incorrect breadth traversal returned after deletion")
+    }
+    
+    func testDeleteOnEmptyTree(){
+        let onlyRootTree = BinarySearchTree<Int>()
+        onlyRootTree.insert(10)
+        onlyRootTree.delete(10)
+        
+        XCTAssertFalse(onlyRootTree.delete(10), "Calling delete on an empty tree must return false")
     }
 }
