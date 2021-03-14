@@ -8,6 +8,7 @@
 import Foundation
 
 extension Array where Element: Comparable {
+    // MARK: - Sorting
     private func merge(leftHalf: Self, rightHalf: Self) -> Self {
         // Creates an array which contains both the left and the right half.
         guard let firstElement = leftHalf.first else {
@@ -74,12 +75,43 @@ extension Array where Element: Comparable {
         return merge(leftHalf: leftHalf, rightHalf: rightHalf)
     }
     
-    
     /// Sorts the array using the merge sort algorithm
     ///
     /// Time complexity: O(n*log(n) )
     /// Space complexity: O(n)
     mutating func mergeSort() {
         self = recursiveMergeSort(self)
+    }
+    
+    private mutating func partition(startingIndex: Int, lowerIndex: Int) -> Int {
+        let pivot = self[lowerIndex]
+        var pivotIndex = startingIndex
+        
+        for i in startingIndex..<lowerIndex {
+            if self[i] <= pivot {
+                swapAt(i, pivotIndex)
+                pivotIndex += 1
+            }
+        }
+        
+        swapAt(pivotIndex, lowerIndex)
+        return pivotIndex
+    }
+    
+    private mutating func recursiveQuickSort(startingIndex: Int, lowerIndex: Int) {
+        guard startingIndex < lowerIndex else {
+            return
+        }
+        
+        let pivotIndex = partition(startingIndex: startingIndex, lowerIndex: lowerIndex)
+        recursiveQuickSort(startingIndex: startingIndex, lowerIndex: pivotIndex - 1)
+        recursiveQuickSort(startingIndex: pivotIndex + 1, lowerIndex: lowerIndex)
+    }
+    
+    /// Sorts in place the array using the quick sort algorithm
+    ///
+    /// Time complexity: O(n*log(n) ) in average case. O(n^2) worst case
+    mutating func quickSort() {
+        recursiveQuickSort(startingIndex: 0, lowerIndex: count - 1)
     }
 }
