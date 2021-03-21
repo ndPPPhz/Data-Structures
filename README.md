@@ -7,6 +7,7 @@ Each data structure is accompanied by a full set of [tests](https://github.com/n
 
 ## List
 - [Binary Search Tree](https://github.com/ndPPPhz/Data-Structures/blob/main/DataStructures/Not%20Linear/Tree/BinarySearchTree.swift)
+- [Binary Tree](https://github.com/ndPPPhz/Data-Structures/blob/main/DataStructures/Not%20Linear/Tree/BinaryTree.swift)
 - [Linked List](https://github.com/ndPPPhz/Data-Structures/blob/main/DataStructures/Linear/LinkedList.swift)
 - [Stack](https://github.com/ndPPPhz/Data-Structures/blob/main/DataStructures/Linear/Stack.swift)
 - [Queue](https://github.com/ndPPPhz/Data-Structures/blob/main/DataStructures/Linear/Queue.swift)
